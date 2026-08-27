@@ -1,6 +1,7 @@
 package utils;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -39,10 +40,10 @@ public class GeneralUtils {
         return option;
     }
 
-    public static void hoverAndClick(WebDriver driver, String locator) {
+    public static void hoverAndClick(WebDriver driver, By locator) {
         try {
             Actions action = new Actions(driver);
-            action.moveToElement(waitForElementTobeVisible(driver,locator)).click().build().perform();
+            action.moveToElement(driver.findElement(locator)).click().build().perform();
 
         } catch (Exception e) {
             e.printStackTrace();
